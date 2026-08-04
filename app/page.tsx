@@ -15,11 +15,11 @@ const scenes: Scene[] = [
   { id: "switch", kicker: "El cambio", title: "Del caos al orden", x: 760, y: 720, scale: 0.86 },
   { id: "reveal", kicker: "El núcleo", title: "Aparece HOSRIA", x: 3100, y: 2020, scale: 0.62 },
   { id: "governance", kicker: "La idea central", title: "Gobernanza de datos", x: 3100, y: 2020, scale: 1.34 },
-  { id: "ecosystem", kicker: "La plataforma", title: "Un ecosistema conectado", x: 3100, y: 2150, scale: 0.36 },
+  { id: "ecosystem", kicker: "La plataforma", title: "Un ecosistema conectado", x: 3100, y: 2100, scale: 0.44 },
   { id: "proposals", kicker: "Primer módulo", title: "Gestión de propuestas", x: 4760, y: 720, scale: 0.86 },
   { id: "reports", kicker: "Segundo módulo", title: "Reportes requeridos", x: 5050, y: 1980, scale: 0.86 },
   { id: "communications", kicker: "Nueva capacidad", title: "Comunicaciones", x: 4580, y: 3200, scale: 0.86 },
-  { id: "network", kicker: "La diferencia", title: "La información se reutiliza", x: 3100, y: 2150, scale: 0.36 },
+  { id: "network", kicker: "La diferencia", title: "La información se reutiliza", x: 3100, y: 2100, scale: 0.44 },
   { id: "outcomes", kicker: "El resultado", title: "Información que se vuelve conocimiento", x: 1660, y: 3280, scale: 0.82 },
   { id: "final", kicker: "HOSRIA", title: "Una única verdad para todos los procesos", x: 3100, y: 2250, scale: 0.80 },
 ];
@@ -179,11 +179,11 @@ export default function Home() {
                 </filter>
               </defs>
               <g className="connection-lines">
-                <path id="pathProposals" d="M3100 2020 C3600 1500 4200 1100 4760 880" />
-                <path id="pathReports" d="M3100 2020 C3800 2020 4400 2080 5050 2130" />
-                <path id="pathComms" d="M3100 2020 C3600 2600 4100 3100 4580 3350" />
-                <path id="pathSegun" d="M3100 2020 C2700 2600 2200 3100 1750 3330" />
-                <path id="pathMvpd" d="M3100 2020 C2500 2050 1900 2100 1350 2180" />
+                <path id="pathProposals" d="M3100 2020 C3300 1800 3600 1700 3860 1600" />
+                <path id="pathReports" d="M3100 2020 C3500 2020 3800 2080 4160 2120" />
+                <path id="pathComms" d="M3100 2020 C3300 2280 3600 2560 3860 2680" />
+                <path id="pathSegun" d="M3100 2020 C2800 2280 2600 2560 2560 2680" />
+                <path id="pathMvpd" d="M3100 2020 C2600 2020 2200 2080 1960 2120" />
               </g>
               {["pathProposals", "pathReports", "pathComms", "pathSegun", "pathMvpd"].map((path, index) => (
                 <circle key={path} className={`data-pulse pulse-${index}`} r="18">

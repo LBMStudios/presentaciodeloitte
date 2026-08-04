@@ -499,7 +499,7 @@ button { font: inherit; }
 .concept-reusable { right: 0; top: 466px; }
 .concept-governed { left: 462px; bottom: -4px; }
 
-.ecosystem-caption { left: 2800px; top: 820px; width: 600px; text-align: center; }
+.ecosystem-caption { left: 2600px; top: 1160px; width: 1000px; text-align: center; }
 .ecosystem-caption span { color: var(--deloitte-green); font-size: 24px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
 .ecosystem-caption strong { display: block; margin-top: 22px; font-size: 54px; font-weight: 800; line-height: 1.04; letter-spacing: -0.03em; }
 
@@ -574,11 +574,11 @@ button { font: inherit; }
   color: #0d0f0d;
 }
 
-.module-proposals { left: 4400px; top: 680px; }
-.module-reports { left: 4690px; top: 1930px; }
-.module-communications { left: 4220px; top: 3150px; }
-.module-segun { left: 1390px; top: 3130px; }
-.module-mvpd { left: 990px; top: 1980px; }
+.module-proposals { left: 3480px; top: 1420px; }
+.module-reports { left: 3780px; top: 1940px; }
+.module-communications { left: 3480px; top: 2460px; }
+.module-segun { left: 2180px; top: 2460px; }
+.module-mvpd { left: 1600px; top: 1940px; }
 
 .detail-node {
   width: 1240px;
