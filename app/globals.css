@@ -1,0 +1,1172 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0d0f0d;
+  --ink-card: #141714;
+  --paper: #f4f6f0;
+  --muted: #8e958c;
+  --line: rgba(255, 255, 255, 0.12);
+  
+  /* Deloitte Official Brand Palette */
+  --deloitte-green: #86bc25;
+  --deloitte-green-bright: #98d62a;
+  --deloitte-green-deep: #628c18;
+  --deloitte-green-glow: rgba(134, 188, 37, 0.35);
+  --deloitte-teal: #00a3e0;
+  --deloitte-blue: #002b49;
+  
+  --red: #ff5e52;
+  --amber: #f5b942;
+  --violet: #b18cff;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+body {
+  color: var(--paper);
+  font-family: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button { font: inherit; }
+
+.presentation-shell {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(134, 188, 37, 0.05), transparent 32%),
+    radial-gradient(circle at 80% 20%, rgba(0, 163, 224, 0.045), transparent 40%),
+    linear-gradient(145deg, #090b09 0%, #111411 50%, #060706 100%);
+  isolation: isolate;
+  touch-action: none;
+}
+
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 82%);
+  pointer-events: none;
+}
+
+.ambient-glow {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  left: 20vw;
+  top: 20vh;
+  border-radius: 50%;
+  background: rgba(134, 188, 37, 0.04);
+  filter: blur(120px);
+  pointer-events: none;
+  transition: background 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scene-switch .ambient-glow { background: rgba(255, 94, 82, 0.06); }
+.scene-outcomes .ambient-glow { background: rgba(0, 163, 224, 0.06); }
+
+.topbar {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 82px;
+  padding: 18px 36px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(to bottom, rgba(9, 11, 9, 0.95), rgba(9, 11, 9, 0.4), transparent);
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+}
+
+.brand, .fullscreen-button { pointer-events: auto; }
+
+.brand {
+  justify-self: start;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  border: 0;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+.brand:hover { opacity: 0.88; }
+
+.brand i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--deloitte-green);
+  box-shadow: 0 0 10px var(--deloitte-green);
+  margin-left: 1px;
+}
+
+.scene-meta { text-align: center; display: flex; flex-direction: column; gap: 3px; }
+.scene-meta span { color: var(--deloitte-green); font-size: 10px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
+.topbar-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.shortcuts-button, .fullscreen-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 9px 16px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  backdrop-filter: blur(16px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shortcuts-button:hover, .fullscreen-button:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(134, 188, 37, 0.5);
+  color: white;
+  box-shadow: 0 0 16px rgba(134, 188, 37, 0.2);
+}
+
+.shortcuts-icon { font-size: 14px; }
+.fullscreen-icon { font-size: 18px; line-height: 1; }
+
+.stage { position: absolute; inset: 0; overflow: hidden; }
+.camera {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6200px;
+  height: 4300px;
+  transform-origin: 0 0;
+  transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+.world {
+  position: relative;
+  width: 6200px;
+  height: 4300px;
+  transform: translateZ(0);
+}
+
+.connections { position: absolute; inset: 0; width: 6200px; height: 4300px; overflow: visible; pointer-events: none; }
+.connection-lines path {
+  fill: none;
+  stroke: rgba(134, 188, 37, 0.45);
+  stroke-width: 8;
+  stroke-dasharray: 12 24;
+  animation: strokeDashFlow 30s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(134, 188, 37, 0.4));
+  transition: stroke 0.5s ease, stroke-width 0.5s ease;
+}
+
+@keyframes strokeDashFlow {
+  from { stroke-dashoffset: 720; }
+  to { stroke-dashoffset: 0; }
+}
+
+.data-pulse {
+  fill: var(--deloitte-green-bright);
+  opacity: 0.95;
+  filter: drop-shadow(0 0 8px var(--deloitte-green));
+}
+
+.world-node, .core-node, .module-node, .detail-node, .outcomes-node, .ecosystem-caption { position: absolute; }
+.connections, .module-node, .detail-node, .outcomes-node, .ecosystem-caption { transition: opacity 0.75s ease; }
+.connections { opacity: 0.08; }
+.module-node, .detail-node, .outcomes-node, .ecosystem-caption { opacity: 0; pointer-events: none; }
+
+.scene-reveal .connections,
+.scene-governance .connections,
+.scene-ecosystem .connections,
+.scene-network .connections,
+.scene-final .connections { opacity: 1; }
+
+.scene-ecosystem .module-node,
+.scene-network .module-node,
+.scene-final .module-node,
+.scene-ecosystem .ecosystem-caption,
+.scene-network .ecosystem-caption,
+.scene-final .ecosystem-caption { opacity: 1; pointer-events: auto; }
+
+.scene-proposals .detail-proposals,
+.scene-reports .detail-reports,
+.scene-communications .detail-communications,
+.scene-outcomes .outcomes-node { opacity: 1; pointer-events: auto; }
+
+.scene-network .connection-lines path { stroke-width: 14; stroke: rgba(134, 188, 37, 0.62); }
+.scene-network .data-pulse { r: 24; }
+
+.switch-node {
+  left: 160px;
+  top: 250px;
+  width: 1200px;
+  min-height: 880px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 90px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 58px;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(255, 94, 82, 0.18), transparent 32%),
+    linear-gradient(140deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+    0 80px 180px rgba(0, 0, 0, 0.55);
+}
+
+.micro-label {
+  color: var(--deloitte-green);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.switch-node h1 {
+  margin: 28px 0 22px;
+  font-size: 138px;
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.85) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.switch-node p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.switch-node button {
+  align-self: flex-start;
+  margin-top: 58px;
+  border: 0;
+  border-radius: 999px;
+  padding: 22px 34px;
+  background: var(--deloitte-green);
+  color: #0d0f0d;
+  font-size: 19px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 35px rgba(134, 188, 37, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.switch-node button:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: var(--deloitte-green-bright);
+  box-shadow: 0 18px 45px rgba(134, 188, 37, 0.5);
+}
+
+.switch-node button span { margin-left: 16px; display: inline-block; transition: transform 0.2s ease; }
+.switch-node button:hover span { transform: translateX(6px); }
+
+.core-node {
+  left: 2550px;
+  top: 1470px;
+  width: 1100px;
+  height: 1100px;
+  border-radius: 50%;
+  cursor: pointer;
+  filter: drop-shadow(0 60px 140px rgba(0, 0, 0, 0.65));
+}
+
+.core-node::before {
+  content: "";
+  position: absolute;
+  inset: 110px;
+  border-radius: 50%;
+  border: 4px solid rgba(134, 188, 37, 0.45);
+  background: radial-gradient(circle at 38% 28%, #202b1c 0%, #121912 55%, #0d0f0d 100%);
+  box-shadow:
+    inset 0 0 140px rgba(134, 188, 37, 0.16),
+    0 0 100px rgba(134, 188, 37, 0.2);
+  transition: all 0.5s ease;
+}
+
+.core-rings i {
+  position: absolute;
+  border: 2px solid rgba(134, 188, 37, 0.22);
+  border-radius: 50%;
+  animation: coreBreathe 6s ease-in-out infinite;
+}
+
+.core-rings i:nth-child(1) { inset: 25px; }
+.core-rings i:nth-child(2) { inset: 70px; animation-delay: -2s; }
+.core-rings i:nth-child(3) { inset: 155px; animation-delay: -4s; }
+
+@keyframes coreBreathe {
+  0%, 100% { transform: scale(1); opacity: 0.25; }
+  50% { transform: scale(1.04); opacity: 0.6; border-color: rgba(134, 188, 37, 0.45); }
+}
+
+.core-content {
+  position: absolute;
+  inset: 260px 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.core-eyebrow { color: var(--deloitte-green); font-size: 18px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
+.core-content h2 {
+  margin: 12px 0 8px;
+  font-size: 124px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  background: linear-gradient(180deg, #ffffff 0%, #b8e658 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.core-content p { margin: 0; color: rgba(255, 255, 255, 0.72); font-size: 29px; font-weight: 400; line-height: 1.25; }
+
+.concept {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  background: var(--deloitte-green);
+  color: #0d0f0d;
+  font-size: 19px;
+  font-weight: 800;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(134, 188, 37, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.concept:hover {
+  transform: scale(1.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 45px rgba(134, 188, 37, 0.55);
+}
+
+.concept-unique { left: 6px; top: 466px; }
+.concept-connected { left: 462px; top: -4px; }
+.concept-reusable { right: 0; top: 466px; }
+.concept-governed { left: 462px; bottom: -4px; }
+
+.ecosystem-caption { left: 2800px; top: 820px; width: 600px; text-align: center; }
+.ecosystem-caption span { color: var(--deloitte-green); font-size: 24px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+.ecosystem-caption strong { display: block; margin-top: 22px; font-size: 54px; font-weight: 800; line-height: 1.04; letter-spacing: -0.03em; }
+
+.module-node {
+  width: 720px;
+  min-height: 400px;
+  padding: 62px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 44px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
+    0 55px 120px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  transform: translateZ(0);
+  will-change: transform;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.32s ease, background 0.32s ease, box-shadow 0.32s ease;
+}
+
+.module-node:hover {
+  transform: translateY(-16px) scale(1.02);
+  border-color: rgba(134, 188, 37, 0.55);
+  background: linear-gradient(145deg, rgba(134, 188, 37, 0.14), rgba(255, 255, 255, 0.04));
+  box-shadow:
+    inset 0 1px 1px 0 rgba(134, 188, 37, 0.2),
+    0 65px 140px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(134, 188, 37, 0.18);
+}
+
+.module-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.module-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--deloitte-green);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(134, 188, 37, 0.1);
+  border: 1px solid rgba(134, 188, 37, 0.3);
+}
+
+.module-node .module-index { color: var(--deloitte-green); font-size: 17px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+.module-node strong { display: block; margin-top: 20px; font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+.module-node p { max-width: 500px; margin: 28px 0 0; color: rgba(255, 255, 255, 0.65); font-size: 23px; line-height: 1.4; }
+.module-node i {
+  position: absolute;
+  top: 58px;
+  right: 58px;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--deloitte-green);
+  font-style: normal;
+  font-size: 25px;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+.module-node:hover i {
+  transform: scale(1.15) rotate(45deg);
+  background: var(--deloitte-green);
+  color: #0d0f0d;
+}
+
+.module-proposals { left: 4400px; top: 680px; }
+.module-reports { left: 4690px; top: 1930px; }
+.module-communications { left: 4220px; top: 3150px; }
+.module-segun { left: 1390px; top: 3130px; }
+.module-mvpd { left: 990px; top: 1980px; }
+
+.detail-node {
+  width: 1240px;
+  min-height: 840px;
+  padding: 56px 68px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 56px;
+  background: linear-gradient(145deg, rgba(24, 30, 24, 0.98), rgba(12, 14, 12, 0.98));
+  backdrop-filter: blur(28px);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+    0 80px 200px rgba(0, 0, 0, 0.6);
+}
+
+.detail-heading span { color: var(--deloitte-green); font-size: 17px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+.detail-heading h2 { margin: 20px 0 18px; font-size: 78px; font-weight: 800; line-height: 0.93; letter-spacing: -0.055em; }
+.detail-heading p { max-width: 720px; color: rgba(255, 255, 255, 0.65); font-size: 23px; line-height: 1.45; }
+.detail-proposals { left: 4140px; top: 380px; }
+.detail-reports { left: 4430px; top: 1630px; }
+.detail-communications { left: 3960px; top: 2850px; }
+
+.core-orbit-chips {
+  position: absolute;
+  inset: -60px;
+  pointer-events: none;
+}
+
+.orbit-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(18, 24, 18, 0.88);
+  border: 1px solid rgba(134, 188, 37, 0.45);
+  color: var(--deloitte-green);
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  animation: orbitFloat 6s ease-in-out infinite alternate;
+}
+.chip-1 { top: 0; left: 20%; animation-delay: 0s; }
+.chip-2 { top: 25%; right: -20px; animation-delay: 1.5s; }
+.chip-3 { bottom: 0; right: 20%; animation-delay: 3s; }
+.chip-4 { bottom: 25%; left: -20px; animation-delay: 4.5s; }
+
+@keyframes orbitFloat {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-10px) scale(1.05); }
+}
+
+/* Executive Proposals Comparative Grid */
+.before-after-grid {
+  display: grid;
+  grid-template-columns: 1fr 70px 1fr;
+  gap: 24px;
+  align-items: center;
+  margin-top: 42px;
+}
+
+.before-card, .after-card {
+  padding: 38px 34px;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+  backdrop-filter: blur(16px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.before-card {
+  background: rgba(235, 30, 30, 0.04);
+  border: 1px solid rgba(235, 30, 30, 0.22);
+}
+
+.after-card {
+  background: rgba(134, 188, 37, 0.05);
+  border: 1px solid rgba(134, 188, 37, 0.3);
+  box-shadow: 0 20px 60px rgba(134, 188, 37, 0.1);
+}
+
+.card-badge {
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.badge-danger {
+  background: rgba(235, 30, 30, 0.15);
+  color: #ff5555;
+  border: 1px solid rgba(235, 30, 30, 0.4);
+}
+.badge-success {
+  background: rgba(134, 188, 37, 0.15);
+  color: var(--deloitte-green);
+  border: 1px solid rgba(134, 188, 37, 0.4);
+}
+
+.before-card h3, .after-card h3 {
+  margin: 18px 0;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.impact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.impact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.transformation-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--deloitte-green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+.transformation-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(134, 188, 37, 0.15);
+  border: 1px solid rgba(134, 188, 37, 0.4);
+  font-size: 20px;
+}
+
+.card-footer-metric {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.metric-danger strong { color: #ff5555; font-size: 14px; font-weight: 900; }
+.metric-danger span { color: rgba(255, 255, 255, 0.5); font-size: 13px; }
+.metric-success strong { color: var(--deloitte-green); font-size: 14px; font-weight: 900; }
+.metric-success span { color: rgba(255, 255, 255, 0.5); font-size: 13px; }
+
+/* Executive Report Workflow Step-by-Step */
+.report-workflow-visual {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 42px;
+}
+
+.workflow-step {
+  flex: 1;
+  min-height: 280px;
+  padding: 28px 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.highlight-step {
+  border-color: rgba(134, 188, 37, 0.5);
+  background: linear-gradient(145deg, rgba(134, 188, 37, 0.12), rgba(134, 188, 37, 0.03));
+  box-shadow: 0 15px 40px rgba(134, 188, 37, 0.15);
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.step-num {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--deloitte-green);
+}
+.step-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+}
+.badge-green {
+  background: rgba(134, 188, 37, 0.2);
+  color: var(--deloitte-green);
+}
+
+.workflow-step strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+  margin-top: 14px;
+}
+.workflow-step p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 8px 0 0;
+}
+
+.step-status {
+  align-self: flex-start;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+}
+.status-active { color: var(--deloitte-teal); }
+.status-green { color: var(--deloitte-green); font-weight: 800; }
+
+.workflow-connector {
+  color: var(--deloitte-green);
+  font-size: 22px;
+  font-weight: 900;
+  opacity: 0.6;
+}
+
+.communications-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 260px;
+  margin-top: 40px;
+}
+
+.upload-once {
+  position: relative;
+  z-index: 2;
+  width: 270px;
+  height: 220px;
+  padding: 30px;
+  border-radius: 24px;
+  background: var(--deloitte-green);
+  color: #0d0f0d;
+  box-shadow: 0 20px 50px rgba(134, 188, 37, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.upload-once span {
+  align-self: flex-end;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+}
+.upload-once strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+.upload-once small {
+  display: block;
+  margin-top: 6px;
+  opacity: 0.8;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.distribution-svg {
+  flex: 1;
+  height: 240px;
+  margin: 0 -4px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.audience-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 270px;
+  z-index: 2;
+}
+
+.audience {
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.audience:hover {
+  border-color: rgba(134, 188, 37, 0.5);
+  background: rgba(134, 188, 37, 0.12);
+  transform: translateX(4px);
+}
+
+.audience span { font-size: 18px; font-weight: 700; color: white; }
+.detail-communications blockquote { margin: 26px 0 0; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: var(--deloitte-green); font-size: 34px; font-weight: 700; line-height: 1.15; }
+
+.outcomes-node {
+  left: 980px;
+  top: 2840px;
+  width: 1360px;
+  min-height: 1020px;
+  padding: 100px;
+  border-radius: 64px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background:
+    radial-gradient(circle at 85% 20%, rgba(0, 163, 224, 0.2), transparent 32%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(28px);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+    0 80px 180px rgba(0, 0, 0, 0.5);
+}
+
+.outcomes-node h2 { margin: 30px 0 70px; max-width: 1000px; font-size: 86px; font-weight: 800; line-height: 0.95; letter-spacing: -0.055em; }
+.outcome-list { display: grid; grid-template-columns: 1fr 1fr; gap: 46px 58px; }
+.outcome-list div { display: grid; grid-template-columns: 55px 1fr; column-gap: 20px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.14); }
+.outcome-list b { grid-row: 1 / span 2; color: var(--deloitte-green); font-size: 17px; font-weight: 800; }
+.outcome-list strong { font-size: 28px; font-weight: 700; }
+.outcome-list span { margin-top: 10px; color: rgba(255, 255, 255, 0.62); font-size: 18px; line-height: 1.4; }
+
+.final-pillars-node {
+  position: absolute;
+  left: 2150px;
+  top: 3100px;
+  width: 1900px;
+  text-align: center;
+  z-index: 5;
+}
+
+.final-pillars-node h2 {
+  margin: 16px 0 48px;
+  font-size: 72px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: white;
+}
+
+.final-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.pillar-card {
+  padding: 36px 28px;
+  border-radius: 28px;
+  border: 1px solid rgba(134, 188, 37, 0.3);
+  background: linear-gradient(145deg, rgba(20, 26, 20, 0.92), rgba(10, 12, 10, 0.92));
+  backdrop-filter: blur(20px);
+  text-align: left;
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
+    0 30px 80px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--deloitte-green);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(134, 188, 37, 0.3),
+    0 40px 90px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(134, 188, 37, 0.2);
+}
+
+.pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.pillar-header i {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--deloitte-green);
+  color: #0d0f0d;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.pillar-header strong {
+  color: white;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.pillar-card span {
+  display: block;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.presentation-nav {
+  position: fixed;
+  z-index: 35;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(13, 15, 13, 0.9);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
+    0 20px 70px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(24px) saturate(180%);
+}
+
+.presentation-nav > button {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.presentation-nav > button:hover:not(:disabled) {
+  background: var(--deloitte-green);
+  color: #0d0f0d;
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(134, 188, 37, 0.45);
+}
+.presentation-nav > button:disabled { opacity: 0.25; cursor: default; }
+
+.progress-track { display: flex; align-items: center; gap: 6px; }
+.progress-track button {
+  position: relative;
+  width: 22px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-track i {
+  display: block;
+  width: 18px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.progress-track button.visited i { background: rgba(134, 188, 37, 0.45); }
+.progress-track button.active i {
+  height: 10px;
+  width: 22px;
+  background: var(--deloitte-green);
+  box-shadow: 0 0 12px var(--deloitte-green);
+}
+
+.progress-track button .nav-tooltip {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(18, 22, 18, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.progress-track button:hover .nav-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.step-count { min-width: 65px; color: rgba(255, 255, 255, 0.45); font-size: 12px; font-weight: 600; }
+.step-count b { color: white; font-size: 14px; font-weight: 800; }
+.navigation-hint { position: fixed; z-index: 30; right: 34px; bottom: 34px; color: rgba(255, 255, 255, 0.38); font-size: 12px; font-weight: 500; }
+
+.scene-final .core-node::before { box-shadow: inset 0 0 160px rgba(134, 188, 37, 0.2), 0 0 200px rgba(134, 188, 37, 0.35); }
+.scene-final .connection-lines path { opacity: 0.15; }
+.scene-final .module-node { opacity: 0.26; }
+
+@media (max-width: 760px) {
+  .topbar { min-height: 68px; padding: 14px 18px; grid-template-columns: 1fr auto; }
+  .scene-meta { display: none; }
+  .fullscreen-button span:last-child { display: none; }
+  .fullscreen-button { padding: 8px 11px; }
+  .presentation-nav { bottom: 18px; gap: 8px; max-width: calc(100vw - 24px); }
+  .progress-track { gap: 2px; }
+  .progress-track button { width: 14px; }
+  .progress-track i { width: 14px; }
+  .step-count { display: none; }
+  .navigation-hint { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .camera { transition-duration: 1ms; }
+  .core-rings i, .data-pulse { animation: none; }
+}
+
+/* Fullscreen Immersive Presentation Mode */
+.is-fullscreen .topbar,
+:fullscreen .topbar {
+  opacity: 0;
+  pointer-events: auto;
+  transform: translateY(-16px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.is-fullscreen .topbar:hover,
+:fullscreen .topbar:hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-fullscreen .presentation-nav,
+:fullscreen .presentation-nav {
+  opacity: 0;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(20px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.is-fullscreen .presentation-nav:hover,
+:fullscreen .presentation-nav:hover {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.is-fullscreen .navigation-hint,
+:fullscreen .navigation-hint {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.back-to-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--deloitte-green);
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+}
+.back-to-map:hover {
+  background: rgba(134, 188, 37, 0.15);
+  border-color: var(--deloitte-green);
+  color: white;
+  transform: translateX(-4px);
+}
+
+/* Shortcuts Modal Styles */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(16px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 28px;
+  border: 1px solid rgba(134, 188, 37, 0.35);
+  background: linear-gradient(145deg, #181d18, #0e110e);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.75), 0 0 50px rgba(134, 188, 37, 0.15);
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.modal-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.modal-close {
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+}
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.modal-body {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.shortcut-row:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.shortcut-keys {
+  display: flex;
+  gap: 6px;
+}
+
+kbd {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--deloitte-green);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.shortcut-row span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
