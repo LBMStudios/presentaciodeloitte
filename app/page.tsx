@@ -252,12 +252,12 @@ export default function Home() {
               </div>}
             </section>
 
-            {[3, 7, 9].includes(active) && <div className="ecosystem-caption">
+            {[3, 7].includes(active) && <div className="ecosystem-caption">
               <span>UN NÚCLEO</span>
               <strong>Múltiples procesos.<br />La misma información.</strong>
             </div>}
 
-            {[3, 7, 9].includes(active) && modules.map((module) => (
+            {[3, 7].includes(active) && modules.map((module) => (
               <button
                 key={module.id}
                 className={`module-node ${module.className}`}
