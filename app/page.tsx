@@ -427,25 +427,82 @@ export default function Home() {
               </div>
             </section>}
 
-            {active === 9 && <div className="final-pillars-node" aria-label="Pilares estratégicos de HOSRIA">
-              <span className="micro-label">UNA ÚNICA VERDAD</span>
-              <h2>HOSRIA en la organización</h2>
+            {active === 9 && <div className="final-pillars-node" aria-label="Cierre estratégico HOSRIA">
+              <div className="final-top">
+                <span className="micro-label">UNA ÚNICA VERDAD</span>
+                <span className="final-scene-pill">Escena 10 / 10</span>
+              </div>
+              <div className="final-brand-block">
+                <span className="final-brand-logo">HOSRIA<i /></span>
+                <p className="final-brand-sub">Una única verdad para todos los procesos de la organización.</p>
+              </div>
+              <div className="final-metrics">
+                <div className="final-metric">
+                  <strong>3</strong>
+                  <span>Módulos integrados</span>
+                </div>
+                <div className="final-metric-divider" />
+                <div className="final-metric">
+                  <strong>1×</strong>
+                  <span>Dato único, siempre</span>
+                </div>
+                <div className="final-metric-divider" />
+                <div className="final-metric">
+                  <strong>360°</strong>
+                  <span>Visión ejecutiva en tiempo real</span>
+                </div>
+                <div className="final-metric-divider" />
+                <div className="final-metric">
+                  <strong>0</strong>
+                  <span>Duplicados o inconsistencias</span>
+                </div>
+              </div>
               <div className="final-pillars-grid">
                 <div className="pillar-card">
-                  <div className="pillar-header"><i>✓</i><strong>Información Única</strong></div>
+                  <div className="pillar-header">
+                    <span className="pillar-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </span>
+                    <strong>Información Única</strong>
+                  </div>
                   <span>Cero datos duplicados o dispersos entre áreas</span>
                 </div>
                 <div className="pillar-card">
-                  <div className="pillar-header"><i>✓</i><strong>Procesos Conectados</strong></div>
+                  <div className="pillar-header">
+                    <span className="pillar-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                    </span>
+                    <strong>Procesos Conectados</strong>
+                  </div>
                   <span>Trazabilidad y flujo automático en tiempo real</span>
                 </div>
                 <div className="pillar-card">
-                  <div className="pillar-header"><i>✓</i><strong>Dato Gobernado</strong></div>
+                  <div className="pillar-header">
+                    <span className="pillar-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </span>
+                    <strong>Dato Gobernado</strong>
+                  </div>
                   <span>Reglas de negocio y accesos estandarizados</span>
                 </div>
                 <div className="pillar-card">
-                  <div className="pillar-header"><i>✓</i><strong>Conocimiento Directivo</strong></div>
+                  <div className="pillar-header">
+                    <span className="pillar-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    </span>
+                    <strong>Conocimiento Directivo</strong>
+                  </div>
                   <span>Toma de decisiones respaldada por una sola realidad</span>
+                </div>
+              </div>
+              <div className="final-cta-row">
+                <button className="final-cta-btn" onClick={() => goTo(0)}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+                  Volver al inicio
+                </button>
+                <div className="final-deloitte-brand">
+                  <span>Presentado por</span>
+                  <strong>Deloitte<span>.</span></strong>
                 </div>
               </div>
             </div>}

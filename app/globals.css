@@ -1281,3 +1281,232 @@ kbd {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+
+/* ── FINAL SCENE (Scene 9) ── */
+.final-pillars-node {
+  position: absolute;
+  left: 1700px;
+  top: 1560px;
+  width: 2800px;
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+  padding: 100px 120px 90px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 72px;
+  background:
+    radial-gradient(circle at 10% 90%, rgba(134, 188, 37, 0.12), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(0, 163, 224, 0.08), transparent 40%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(32px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 100px 220px rgba(0, 0, 0, 0.6);
+}
+
+.final-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.final-scene-pill {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+
+.final-brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.final-brand-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 86px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: white;
+}
+
+.final-brand-logo i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--deloitte-green);
+  box-shadow: 0 0 20px var(--deloitte-green), 0 0 40px rgba(134, 188, 37, 0.4);
+}
+
+.final-brand-sub {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.5;
+  max-width: 1400px;
+}
+
+/* Metrics bar */
+.final-metrics {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 36px 52px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.final-metric {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.final-metric strong {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(160deg, #ffffff 0%, var(--deloitte-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.final-metric span {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+.final-metric-divider {
+  width: 1px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  margin: 0 8px;
+}
+
+/* Pillars grid */
+.final-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pillar-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 28px 30px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pillar-card:hover {
+  border-color: rgba(134, 188, 37, 0.35);
+  background: rgba(134, 188, 37, 0.06);
+  transform: translateY(-4px);
+}
+
+.pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pillar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(134, 188, 37, 0.12);
+  color: var(--deloitte-green);
+  flex-shrink: 0;
+}
+
+.pillar-header strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.pillar-card > span {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.55;
+}
+
+/* CTA row */
+.final-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.final-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 14px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.final-cta-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  transform: translateX(-3px);
+}
+
+.final-deloitte-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.final-deloitte-brand span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 500;
+}
+
+.final-deloitte-brand strong {
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.02em;
+}
+
+.final-deloitte-brand strong span {
+  color: var(--deloitte-green);
+  font-size: inherit;
+  font-weight: inherit;
+}
