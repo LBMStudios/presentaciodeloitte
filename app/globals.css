@@ -445,6 +445,184 @@ button { font: inherit; }
     0 0 0 1px rgba(134, 188, 37, 0.08);
 }
 
+/* ── Governance Overlay (Scene 3) — fixed viewport panel, left side ── */
+.governance-overlay {
+  position: fixed;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 36px 38px 38px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 20% 90%, rgba(0, 163, 224, 0.1), transparent 50%),
+    linear-gradient(145deg, rgba(18, 24, 18, 0.96), rgba(10, 13, 10, 0.98));
+  backdrop-filter: blur(24px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 40px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 163, 224, 0.08);
+}
+
+/* Shared overlay text styles */
+.reveal-overlay h3,
+.governance-overlay h3 {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: white;
+}
+
+.reveal-overlay p,
+.governance-overlay p {
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.6;
+}
+
+.reveal-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.reveal-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+}
+
+.reveal-stat strong {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(160deg, #ffffff 0%, var(--deloitte-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.reveal-stat span {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.reveal-stat-div {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  margin: 0 4px;
+}
+
+/* Governance principles list */
+.gov-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gov-principles {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gov-principle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s ease;
+}
+
+.gov-principle:last-child { border-bottom: none; }
+.gov-principle:hover { background: rgba(255, 255, 255, 0.06); }
+
+.gov-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(0, 163, 224, 0.12);
+  color: #00a3e0;
+}
+
+.gov-icon-green {
+  background: rgba(134, 188, 37, 0.12);
+  color: var(--deloitte-green);
+}
+
+.gov-principle > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gov-principle strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+
+.gov-principle span {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.48);
+  line-height: 1.4;
+}
+
+/* Shared next button */
+.reveal-next-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(134, 188, 37, 0.4);
+  border-radius: 999px;
+  background: rgba(134, 188, 37, 0.08);
+  color: var(--deloitte-green);
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-next-btn:hover {
+  background: rgba(134, 188, 37, 0.18);
+  border-color: var(--deloitte-green);
+  color: white;
+  transform: translateX(4px);
+}
+
+.reveal-next-btn span { transition: transform 0.2s ease; }
+.reveal-next-btn:hover span { transform: translateX(4px); }
 
 .core-node::before {
   content: "";

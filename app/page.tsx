@@ -586,6 +586,59 @@ export default function Home() {
         </aside>
       )}
 
+      {/* Fixed overlay: Governance panel (Scene 3) */}
+      {active === 2 && (
+        <aside className="governance-overlay" aria-label="Gobernanza de datos HOSRIA">
+          <div className="gov-top">
+            <span className="micro-label">LA IDEA CENTRAL</span>
+            <span className="switch-scene-pill">Escena 3 / 10</span>
+          </div>
+          <h3>Gobernanza<br />de datos.</h3>
+          <p>Un dato ingresa una vez y se propaga con reglas claras a todos los procesos que lo necesitan.</p>
+          <div className="gov-principles">
+            <div className="gov-principle">
+              <span className="gov-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <div>
+                <strong>Gobernado</strong>
+                <span>Reglas de negocio y responsables definidos</span>
+              </div>
+            </div>
+            <div className="gov-principle">
+              <span className="gov-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </span>
+              <div>
+                <strong>Automatizado</strong>
+                <span>Flujos sin intervención manual repetitiva</span>
+              </div>
+            </div>
+            <div className="gov-principle">
+              <span className="gov-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </span>
+              <div>
+                <strong>Única verdad</strong>
+                <span>Una sola fuente de datos, sin duplicados</span>
+              </div>
+            </div>
+            <div className="gov-principle">
+              <span className="gov-icon gov-icon-green">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </span>
+              <div>
+                <strong>Reutilizable</strong>
+                <span>Cada proceso consume la misma fuente</span>
+              </div>
+            </div>
+          </div>
+          <button className="reveal-next-btn" onClick={() => goTo(3)}>
+            Ver el ecosistema <span>→</span>
+          </button>
+        </aside>
+      )}
+
       <nav className="presentation-nav" aria-label="Controles de la presentación">
         <button onClick={previous} disabled={active === 0} aria-label="Concepto anterior">←</button>
         <div className="progress-track" aria-label={`Paso ${active + 1} de ${scenes.length}`}>
