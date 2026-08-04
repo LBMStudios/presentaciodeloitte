@@ -15,11 +15,11 @@ const scenes: Scene[] = [
   { id: "switch", kicker: "El cambio", title: "Del caos al orden", x: 760, y: 720, scale: 0.86 },
   { id: "reveal", kicker: "El núcleo", title: "Aparece HOSRIA", x: 3100, y: 2020, scale: 0.62 },
   { id: "governance", kicker: "La idea central", title: "Gobernanza de datos", x: 3100, y: 2020, scale: 1.34 },
-  { id: "ecosystem", kicker: "La plataforma", title: "Un ecosistema conectado", x: 3100, y: 2050, scale: 0.32 },
+  { id: "ecosystem", kicker: "La plataforma", title: "Un ecosistema conectado", x: 3100, y: 2150, scale: 0.36 },
   { id: "proposals", kicker: "Primer módulo", title: "Gestión de propuestas", x: 4760, y: 720, scale: 0.86 },
   { id: "reports", kicker: "Segundo módulo", title: "Reportes requeridos", x: 5050, y: 1980, scale: 0.86 },
   { id: "communications", kicker: "Nueva capacidad", title: "Comunicaciones", x: 4580, y: 3200, scale: 0.86 },
-  { id: "network", kicker: "La diferencia", title: "La información se reutiliza", x: 3100, y: 2050, scale: 0.32 },
+  { id: "network", kicker: "La diferencia", title: "La información se reutiliza", x: 3100, y: 2150, scale: 0.36 },
   { id: "outcomes", kicker: "El resultado", title: "Información que se vuelve conocimiento", x: 1660, y: 3280, scale: 0.82 },
   { id: "final", kicker: "HOSRIA", title: "Una única verdad para todos los procesos", x: 3100, y: 2250, scale: 0.80 },
 ];
