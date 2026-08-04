@@ -247,7 +247,118 @@ button { font: inherit; }
   box-shadow:
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
     0 80px 180px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
 }
+
+/* Decorative background number */
+.switch-bg-number {
+  position: absolute;
+  right: -20px;
+  top: -60px;
+  font-size: 340px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: rgba(255, 255, 255, 0.028);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Top row with kicker + scene pill */
+.switch-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.switch-scene-pill {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+
+/* Divider with glow dot */
+.switch-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 18px 0 22px;
+}
+.switch-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(134, 188, 37, 0.6), rgba(134, 188, 37, 0.1));
+}
+.switch-divider-line:last-child {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+}
+.switch-divider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--deloitte-green);
+  box-shadow: 0 0 14px var(--deloitte-green), 0 0 28px rgba(134, 188, 37, 0.4);
+  flex-shrink: 0;
+}
+
+/* Before / After transformation pills */
+.switch-pills {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0 0;
+}
+
+.switch-pill {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  padding: 16px 20px;
+  border-radius: 18px;
+  border: 1px solid;
+}
+
+.pill-before {
+  background: rgba(255, 94, 82, 0.08);
+  border-color: rgba(255, 94, 82, 0.22);
+}
+.pill-after {
+  background: rgba(134, 188, 37, 0.08);
+  border-color: rgba(134, 188, 37, 0.22);
+}
+
+.pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.pill-before .pill-icon {
+  background: rgba(255, 94, 82, 0.15);
+  color: #ff5e52;
+}
+.pill-after .pill-icon {
+  background: rgba(134, 188, 37, 0.15);
+  color: var(--deloitte-green);
+}
+
+.switch-pill div { display: flex; flex-direction: column; gap: 3px; }
+.switch-pill strong { font-size: 14px; font-weight: 700; color: white; }
+.switch-pill span { font-size: 12px; color: rgba(255, 255, 255, 0.52); line-height: 1.4; }
+
+.pill-arrow { color: rgba(255, 255, 255, 0.28); flex-shrink: 0; }
+
+
 
 .micro-label {
   color: var(--deloitte-green);

@@ -195,9 +195,39 @@ export default function Home() {
             </svg>}
 
             {active === 0 && <section className="world-node switch-node" aria-label="Del caos al orden">
-              <span className="micro-label">DESPUÉS DEL SWITCH</span>
+              <div className="switch-bg-number" aria-hidden="true">01</div>
+              <div className="switch-top-row">
+                <span className="micro-label">EL CAMBIO</span>
+                <span className="switch-scene-pill">Escena 1 / 10</span>
+              </div>
               <h1>Del caos<br />al orden.</h1>
+              <div className="switch-divider" aria-hidden="true">
+                <span className="switch-divider-line" />
+                <span className="switch-divider-dot" />
+                <span className="switch-divider-line" />
+              </div>
               <p>La información deja de perseguir a las personas<br />y empieza a trabajar para ellas.</p>
+              <div className="switch-pills" aria-label="Transformación">
+                <div className="switch-pill pill-before">
+                  <span className="pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <div>
+                    <strong>Antes</strong>
+                    <span>Datos dispersos, duplicados, sin dueño</span>
+                  </div>
+                </div>
+                <svg className="pill-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <div className="switch-pill pill-after">
+                  <span className="pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <div>
+                    <strong>Con HOSRIA</strong>
+                    <span>Una única verdad, gobernada y reutilizable</span>
+                  </div>
+                </div>
+              </div>
               <button onClick={() => goTo(1)}>Descubrir HOSRIA <span>→</span></button>
             </section>}
 
