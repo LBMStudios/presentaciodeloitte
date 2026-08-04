@@ -417,13 +417,61 @@ export default function Home() {
             </section>}
 
             {active === 8 && <section className="outcomes-node" aria-label="Resultados de HOSRIA">
-              <span className="micro-label">EL RESULTADO</span>
+              <div className="outcomes-top-row">
+                <span className="micro-label">EL RESULTADO</span>
+                <span className="switch-scene-pill">Escena 9 / 10</span>
+              </div>
               <h2>La información<br />se vuelve conocimiento.</h2>
+              <div className="switch-divider" aria-hidden="true">
+                <span className="switch-divider-line" />
+                <span className="switch-divider-dot" style={{background: 'var(--deloitte-teal)', boxShadow: '0 0 14px var(--deloitte-teal)'}} />
+                <span className="switch-divider-line" style={{background: 'linear-gradient(to left, rgba(0,163,224,0.1), rgba(0,163,224,0.5))'}} />
+              </div>
               <div className="outcome-list">
-                <div><b>01</b><strong>Menos burocracia</strong><span>Menos tareas repetidas y controles manuales.</span></div>
-                <div><b>02</b><strong>Base corporativa</strong><span>La organización construye una memoria común.</span></div>
-                <div><b>03</b><strong>Datos confiables</strong><span>Indicadores y dashboards sobre una misma realidad.</span></div>
-                <div><b>04</b><strong>Mejores decisiones</strong><span>El conocimiento llega donde genera valor.</span></div>
+                <div className="outcome-card">
+                  <div className="outcome-card-header">
+                    <span className="outcome-num">01</span>
+                    <span className="outcome-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
+                  </div>
+                  <strong>Menos burocracia</strong>
+                  <span>Menos tareas repetidas y controles manuales. Los procesos fluyen solos.</span>
+                  <div className="outcome-bar" />
+                </div>
+                <div className="outcome-card">
+                  <div className="outcome-card-header">
+                    <span className="outcome-num">02</span>
+                    <span className="outcome-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                    </span>
+                  </div>
+                  <strong>Base corporativa</strong>
+                  <span>La organización construye una memoria común. El saber no se pierde.</span>
+                  <div className="outcome-bar" />
+                </div>
+                <div className="outcome-card">
+                  <div className="outcome-card-header">
+                    <span className="outcome-num">03</span>
+                    <span className="outcome-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </span>
+                  </div>
+                  <strong>Datos confiables</strong>
+                  <span>Indicadores y dashboards sobre una misma realidad. Sin versiones paralelas.</span>
+                  <div className="outcome-bar" />
+                </div>
+                <div className="outcome-card outcome-card-highlight">
+                  <div className="outcome-card-header">
+                    <span className="outcome-num">04</span>
+                    <span className="outcome-icon outcome-icon-highlight">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </span>
+                  </div>
+                  <strong>Mejores decisiones</strong>
+                  <span>El conocimiento llega donde genera valor. En el momento exacto.</span>
+                  <div className="outcome-bar outcome-bar-green" />
+                </div>
               </div>
             </section>}
 
