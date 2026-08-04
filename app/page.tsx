@@ -252,6 +252,32 @@ export default function Home() {
               </div>}
             </section>
 
+            {/* Reveal panel — floats right of core at scale 0.62 */}
+            {active === 1 && <aside className="reveal-panel" aria-label="Introducción a HOSRIA">
+              <span className="micro-label">EL NÚCLEO</span>
+              <h3>Nace HOSRIA</h3>
+              <p>Un repositorio único de información con reglas de negocio, gobernanza y acceso estandarizado para toda la organización.</p>
+              <div className="reveal-stats">
+                <div className="reveal-stat">
+                  <strong>3</strong>
+                  <span>Módulos conectados</span>
+                </div>
+                <div className="reveal-stat-div" />
+                <div className="reveal-stat">
+                  <strong>1×</strong>
+                  <span>Fuente de verdad</span>
+                </div>
+                <div className="reveal-stat-div" />
+                <div className="reveal-stat">
+                  <strong>0</strong>
+                  <span>Duplicados</span>
+                </div>
+              </div>
+              <button className="reveal-next-btn" onClick={() => goTo(2)}>
+                Ver gobernanza <span>→</span>
+              </button>
+            </aside>}
+
             {[3, 7, 9].includes(active) && <div className="ecosystem-caption">
               <span>UN NÚCLEO</span>
               <strong>Múltiples procesos.<br />La misma información.</strong>
