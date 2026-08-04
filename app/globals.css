@@ -1285,9 +1285,9 @@ kbd {
 /* ── FINAL SCENE (Scene 9) ── */
 .final-pillars-node {
   position: absolute;
-  left: 2100px;
-  top: 1530px;
-  width: 2000px;
+  left: 2200px;
+  top: 1650px;
+  width: 1800px;
   display: flex;
   flex-direction: column;
   gap: 36px;
@@ -1304,6 +1304,9 @@ kbd {
     0 100px 220px rgba(0, 0, 0, 0.6);
   z-index: 10;
 }
+
+/* Hide core rings in final scene — they overlap */
+.scene-final .core-node { opacity: 0; pointer-events: none; }
 
 .final-top {
   display: flex;

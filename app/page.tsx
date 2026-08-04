@@ -21,7 +21,7 @@ const scenes: Scene[] = [
   { id: "communications", kicker: "Nueva capacidad", title: "Comunicaciones", x: 4580, y: 3200, scale: 0.86 },
   { id: "network", kicker: "La diferencia", title: "La información se reutiliza", x: 3100, y: 2050, scale: 0.32 },
   { id: "outcomes", kicker: "El resultado", title: "Información que se vuelve conocimiento", x: 1660, y: 3280, scale: 0.82 },
-  { id: "final", kicker: "HOSRIA", title: "Una única verdad para todos los procesos", x: 3100, y: 2020, scale: 0.64 },
+  { id: "final", kicker: "HOSRIA", title: "Una única verdad para todos los procesos", x: 3100, y: 2250, scale: 0.80 },
 ];
 
 const modules = [
