@@ -275,17 +275,26 @@ export default function Home() {
             ))}
 
             {active === 4 && <section className="detail-node detail-proposals" aria-label="Gestión de propuestas">
-              <button className="back-to-map" onClick={() => goTo(3)} aria-label="Volver al ecosistema">
-                ← Volver al mapa de la plataforma
-              </button>
-              <div className="detail-heading">
-                <span>01 / EL ORIGEN</span>
-                <h2>Gestión de propuestas</h2>
-                <p>El primer paso hacia la centralización de la información corporativa.</p>
+              <div className="detail-top-row">
+                <button className="back-btn" onClick={() => goTo(3)} aria-label="Volver al ecosistema">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                  Volver al ecosistema
+                </button>
+                <span className="switch-scene-pill">Escena 5 / 10</span>
+              </div>
+              <span className="micro-label">PRIMER MÓDULO</span>
+              <h2>Gestión de<br />propuestas.</h2>
+              <div className="switch-divider" aria-hidden="true">
+                <span className="switch-divider-line" />
+                <span className="switch-divider-dot" />
+                <span className="switch-divider-line" style={{background: 'linear-gradient(to left, rgba(134,188,37,0.1), rgba(134,188,37,0.5))'}}/>
               </div>
               <div className="before-after-grid">
                 <article className="before-card">
-                  <div className="card-badge badge-danger">✕ MODELO TRADICIONAL</div>
+                  <div className="card-badge badge-danger">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    MODELO TRADICIONAL
+                  </div>
                   <h3>Cada propuesta seguía su propio camino</h3>
                   <ul className="impact-list">
                     <li><i /><span>Archivos dispersos en carpetas locales o correos</span></li>
@@ -306,7 +315,10 @@ export default function Home() {
                 </div>
 
                 <article className="after-card">
-                  <div className="card-badge badge-success">✓ CON HOSRIA</div>
+                  <div className="card-badge badge-success">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    CON HOSRIA
+                  </div>
                   <h3>Un único lugar. Un flujo automático.</h3>
                   <ul className="impact-list">
                     <li><i /><span>Información centralizada identificada en el origen</span></li>
@@ -374,19 +386,20 @@ export default function Home() {
                   </div>
                   <strong>Visión 360°</strong>
                   <p>Indicadores unificados sobre una misma realidad.</p>
-                  <span className="step-status status-green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline-block", verticalAlign: "middle", marginRight: "4px" }}><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Tiempo real</span>
-                </div>
+                  <span className="step-status status-green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline-block", verticalAlign: "middle", marginRight: "4px" }}><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Tiempo real<            {active === 6 && <section className="detail-node detail-communications" aria-label="Comunicaciones personalizadas">
+              <div className="detail-top-row">
+                <button className="back-btn" onClick={() => goTo(3)} aria-label="Volver al ecosistema">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                  Volver al ecosistema
+                </button>
+                <span className="switch-scene-pill">Escena 7 / 10</span>
               </div>
-            </section>}
-
-            {active === 6 && <section className="detail-node detail-communications" aria-label="Comunicaciones personalizadas">
-              <button className="back-to-map" onClick={() => goTo(3)} aria-label="Volver al ecosistema">
-                ← Volver al mapa de la plataforma
-              </button>
-              <div className="detail-heading">
-                <span>03 / INFORMACIÓN DIRIGIDA</span>
-                <h2>Comunicaciones</h2>
-                <p>La información correcta llega únicamente a quien corresponde.</p>
+              <span className="micro-label">NUEVA CAPACIDAD</span>
+              <h2>Comunicaciones<br />dirigidas.</h2>
+              <div className="switch-divider" aria-hidden="true">
+                <span className="switch-divider-line" />
+                <span className="switch-divider-dot" style={{background:'var(--deloitte-teal)', boxShadow:'0 0 14px var(--deloitte-teal)'}} />
+                <span className="switch-divider-line" style={{background:'linear-gradient(to left, rgba(0,163,224,0.1), rgba(0,163,224,0.5))'}}/>
               </div>
               <div className="communications-visual">
                 <div className="upload-once">
@@ -396,24 +409,22 @@ export default function Home() {
                     <small>Información consolidada</small>
                   </div>
                 </div>
-                
                 <svg className="distribution-svg" viewBox="0 0 500 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M 0 120 C 200 120, 300 32, 500 32" stroke="var(--deloitte-green)" strokeWidth="3" strokeDasharray="6 6" opacity="0.85" />
                   <path d="M 0 120 L 500 120" stroke="var(--deloitte-green)" strokeWidth="3" strokeDasharray="6 6" opacity="0.85" />
                   <path d="M 0 120 C 200 120, 300 208, 500 208" stroke="var(--deloitte-green)" strokeWidth="3" strokeDasharray="6 6" opacity="0.85" />
-                  
                   <circle cx="500" cy="32" r="6" fill="var(--deloitte-green)" />
                   <circle cx="500" cy="120" r="6" fill="var(--deloitte-green)" />
                   <circle cx="500" cy="208" r="6" fill="var(--deloitte-green)" />
                 </svg>
-
                 <div className="audience-group">
                   <div className="audience"><span>Licencias</span></div>
                   <div className="audience"><span>Cursos</span></div>
                   <div className="audience"><span>Notificaciones</span></div>
                 </div>
               </div>
-              <blockquote>“Si ya lo sabemos,<br />no lo volvemos a pedir.”</blockquote>
+              <blockquote>“Si ya lo sabemos,<br />¿por qué volver a pedirlo?”</blockquote>
+            </section>}�Si ya lo sabemos,<br />no lo volvemos a pedir.”</blockquote>
             </section>}
 
             {active === 8 && <section className="outcomes-node" aria-label="Resultados de HOSRIA">

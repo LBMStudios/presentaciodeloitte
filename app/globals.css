@@ -786,19 +786,57 @@ button { font: inherit; }
 .detail-node {
   width: 1240px;
   min-height: 840px;
-  padding: 56px 68px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 52px 64px 60px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 56px;
-  background: linear-gradient(145deg, rgba(24, 30, 24, 0.98), rgba(12, 14, 12, 0.98));
+  background:
+    radial-gradient(circle at 90% 5%, rgba(134, 188, 37, 0.06), transparent 35%),
+    linear-gradient(145deg, rgba(24, 30, 24, 0.98), rgba(12, 14, 12, 0.98));
   backdrop-filter: blur(28px);
   box-shadow:
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
-    0 80px 200px rgba(0, 0, 0, 0.6);
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
+    0 80px 200px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
+/* Detail scene top row: back btn + scene pill */
+.detail-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.back-btn:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* Detail heading — unified across all module scenes */
 .detail-heading span { color: var(--deloitte-green); font-size: 17px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
 .detail-heading h2 { margin: 20px 0 18px; font-size: 78px; font-weight: 800; line-height: 0.93; letter-spacing: -0.055em; }
 .detail-heading p { max-width: 720px; color: rgba(255, 255, 255, 0.65); font-size: 23px; line-height: 1.45; }
+
+.detail-node h2 { margin: 6px 0 0; font-size: 76px; font-weight: 800; line-height: 0.93; letter-spacing: -0.055em; }
+.detail-node > p { max-width: 720px; margin: 0; color: rgba(255, 255, 255, 0.65); font-size: 22px; line-height: 1.45; }
+
 .detail-proposals { left: 4140px; top: 380px; }
 .detail-reports { left: 4430px; top: 1630px; }
 .detail-communications { left: 3960px; top: 2850px; }
