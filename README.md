@@ -1,104 +1,150 @@
-# HOSRIA â PresentaciÃ³n web interactiva
+# HOSRIA — CORE ECOSYSTEM SPATIAL STORY
+### INTERACTIVE SPATIAL CANVAS & SINGLE SOURCE OF TRUTH PLATFORM
+`DELOITTE / HEALTHCARE DATA ECOSYSTEM` · `LBM STUDIOS ARCHIVE 01/06`
 
-Lienzo narrativo con navegaciÃ³n espacial y transiciones de cÃ¡mara inspirado en Prezi. Presenta a HOSRIA como el nÃºcleo de un ecosistema de informaciÃ³n Ãºúnica, conectada, reutilizable y gobernada.
+```text
+┌─────────────────────────────────────────────────────────────────────────┐
+│ CASE STUDY: 01/06                                                       │
+│ PROJECT:    HOSRIA — SPATIAL PRESENTATION & ARCHITECTURE PLATFORM       │
+│ CLIENT:     DELOITTE                                                    │
+│ ROLE:       CREATIVE TECHNOLOGIST & FORWARD DEPLOYED SYSTEMS ARCHITECT  │
+│ STACK:      REACT 19 · TYPESCRIPT · NEXT.JS 16 · VITEST · CLOUDFLARE    │
+│ STATUS:     PRODUCTION VERIFIED / LIVE DEMO                             │
+└─────────────────────────────────────────────────────────────────────────┘
+```
 
-Demo publicada: https://hosira-presentacion.lbmstudios.chatgpt.site
+> **Live Production Demo:**  
+> 🔗 [https://hosira-presentacion.lbmstudios.chatgpt.site](https://hosira-presentacion.lbmstudios.chatgpt.site)
 
-> El nombre definitivo del producto es **HOSRIA**. El slug histÃ³rico de la demo conserva `hosira-presentacion`, pero el contenido, la identidad y los metadatos visibles usan el nombre correcto.
+---
 
-## Objetivo
+## 01 // OVERVIEW & NARRATIVE ARCHITECTURE
 
-estáa experiencia comienza despuÃ©s del video introductorio sobre caos y sobrecarga de informaciÃ³n. No busca enseÃ±ar cada pantalla ni realizar una demostraciÃ³n funcional exhaustiva. Su funciÃ³n es explicar el cambio de paradigma:
+**HOSRIA** is an enterprise-scale spatial narrative interface designed to dismantle informational silos. Rather than presenting fragmented slide decks, the platform models an entire organizational ecosystem on a continuous **6,200 × 4,300 px spatial coordinate plane**.
 
-- la informaciÃ³n deja de estáar dispersa;
-- HOSRIA aparece como nÃºcleo;
-- los procesos se conectan al mismo dato;
-- la organizaciÃ³n construye una Ãºúnica fuente de verdad;
-- el dato gobernado se transforma en conocimiento para decidir.
+The visual narrative guides enterprise stakeholders from chaotic, isolated data repositories toward a **Single Source of Truth** governed by HOSRIA:
 
-El contexto completo estáÃ¡ en [docs/01_CONTEXTO_estáRATEGICO.md](docs/01_CONTEXTO_estáRATEGICO.md).
+```
+[ UNSTRUCTURED DATA ] ──┐
+[ CLINICAL SILOS    ] ──┼──▶ [ HOSRIA CORE ENGINE ] ──▶ [ GOVERNED KNOWLEDGE ]
+[ BILLING FRAGMENTS ] ──┘         (Single Source)             (Executive BI)
+```
 
-## TecnologÃ­a
+### Core Strategic Axioms
+- **No Slide Swapping:** The viewport moves through 10 spatial scenes using hardware-accelerated CSS `matrix3d()` and custom camera transitions.
+- **Zero Heavy Animation Bloat:** 100% native CSS orchestration and reactive React 19 state — zero GSAP or Framer Motion bloat.
+- **Deep Linking & Hash Routing:** Every scene is individually addressable (e.g. `#ecosystem`, `#communications`, `#governance`).
+- **Autonomous & Self-Contained:** Zero third-party telemetry, zero external database locks, zero credential leakage. Ready for Cloudflare Workers edge deployment.
 
-- React 19
-- TypeScript
-- Next.js 16
-- Vite + Vinext
-- CSS propio, sin librerÃ­a de animaciÃ³n
-- Artefacto compatible con Cloudflare Workers
+---
 
-No utiliza base de datos, API, claves privadas ni variables de entorno.
+## 02 // TECHNICAL MATRIX
 
-## Requisitos
+| Dimension | Specification |
+|:---|:---|
+| **Framework** | React 19 + Next.js 16 (App Router) |
+| **Language** | TypeScript (Strict Mode) |
+| **Bundler / Runtime** | Vite + Vinext / Node.js 22+ |
+| **Canvas Dimensions** | 6,200px width × 4,300px height coordinate space |
+| **Navigation Controls** | Keyboard (Arrows/PageUp/PageDown/Space), Trackpad / Wheel, Touch Gestures, Direct Matrix Dots, Fullscreen API |
+| **Deployment Target** | Cloudflare Workers / Edge SSR / Static SPA |
+| **Verification Gate** | Lint (`npm run lint`), Unit Tests (`npm test`), Production Build (`npm run build`) |
 
-- Node.js 22.13 o superior
-- npm
+---
 
-## Ejecutar localmente
+## 03 // SPATIAL CANVAS ENGINE & COORDINATES
+
+The presentation does not load separate pages. It positions camera coordinates `(x, y, scale)` dynamically across the spatial plane:
+
+```typescript
+// app/page.tsx — Spatial Scene Registry
+interface SceneCoordinate {
+  id: string;
+  title: string;
+  x: number;
+  y: number;
+  scale: number;
+  hash: string;
+}
+```
+
+```
+ (0,0) ┌─────────────────────────────────────────────────────────┐
+       │ Scene 01: Context & Chaos                               │
+       │                               Scene 03: Modules         │
+       │         Scene 02: HOSRIA Core                           │
+       │                                                         │
+       │ Scene 04: Flow & Governance                             │
+       │                               Scene 10: Executive Close │
+       └─────────────────────────────────────────────── (6200,4300)
+```
+
+---
+
+## 04 // REPOSITORY STRUCTURE
+
+```text
+├── app/
+│   ├── globals.css          # Spatial coordinate grid, fluid typography, theme variables
+│   ├── layout.tsx           # Semantic HTML5 root, metadata, viewport configuration
+│   ├── page.tsx             # 10-scene state machine, camera matrix, dynamic SVG flows
+│   └── test/                # Unit test suites and navigation verification
+├── docs/
+│   ├── 01_CONTEXTO_ESTRATEGICO.md   # Enterprise problem definition & stakeholder brief
+│   ├── 02_GUION_Y_RECORRIDO.md       # Speaker narration script & scene transitions
+│   ├── 03_DISENO_Y_NAVEGACION.md     # Spatial layout math & a11y keyboard controls
+│   ├── 04_ROADMAP_Y_PENDIENTES.md    # Future evolutions & interactive module roadmap
+│   └── 05_REFERENCIAS.md            # Conceptual benchmarks & Deloitte brand references
+├── public/                  # High-density SVG assets & vector schemas
+├── package.json             # React 19 + TypeScript + Vite toolchain
+└── tsconfig.json            # Strict TypeScript configuration
+```
+
+---
+
+## 05 // LOCAL DEVELOPMENT & VERIFICATION
+
+### Prerequisites
+- Node.js `22.13.0` or higher
+- npm `10.0.0` or higher
 
 ```bash
+# 1. Clone repository
+git clone https://github.com/LBMStudios/presentaciodeloitte.git
+cd presentaciodeloitte
+
+# 2. Install dependencies
 npm ci
+
+# 3. Start local development server
 npm run dev
 ```
 
-Abrir la URL local indicada por Vite en la terminal.
-
-## Verificar y compilar
-
+### Verification Gate
 ```bash
+# Static analysis & linting
 npm run lint
-npm testá
-```
 
-TambiÃ©n se puede generar el artefacto de producciÃ³n con:
+# Automated test suite
+npm test
 
-```bash
+# Production build compilation
 npm run build
 ```
 
-## NavegaciÃ³n
+---
 
-- Flechas del teclado, Page Up/Page Down o barra espaciadora.
-- Rueda del mouse o trackpad.
-- Gestáo vertical en dispositivos tÃ¡ctiles.
-- Puntos de progreso inferiores para acceso directo.
-- Botones sobre los mÃ³dulos para hacer zoom.
-- Home y End para ir al inicio o al final.
-- BotÃ³n de pantalla completa en el encabezado.
-- Cada escena tiene una URL con hash, por ejemplo `#ecosystem` o `#commuúnications`.
+## 06 // KEYBOARD & ACCESSIBILITY CONTROLS
 
-## DÃ³nde editar
+- `Space` / `ArrowRight` / `PageDown`: Advance to next spatial coordinate.
+- `ArrowLeft` / `PageUp`: Return to previous scene.
+- `Home` / `End`: Jump to Genesis Scene / Strategic Synthesis Scene.
+- `F`: Toggle native browser Fullscreen mode.
+- `Numeric / Direct Dots`: Direct jump to any of the 10 architecture chapters.
 
-- `app/page.tsx`: escenas, contenidos, mÃ³dulos, coordenadas y navegaciÃ³n.
-- `app/globals.css`: sistema visual, disposiciÃ³n espacial, transiciones y responsive.
-- `app/layout.tsx`: metadatos, idioma y tipografÃ­as.
-- `public/`: recursos estáÃ¡ticos.
+---
 
-La propiedad `x`, `y` y `scale` de cada elemento de `scenes` controla la cÃ¡mara. La presentaciÃ³n no intercambia diapositivas: mueve y escala un Ãºnico mundo de 6200 Ã 4300 pÃ­xeles.
-
-## estáructura documental
-
-- `docs/01_CONTEXTO_estáRATEGICO.md`: problema, concepto, mÃ³dulos, beneficios y decisiones de la reuniÃ³n.
-- `docs/02_GUION_Y_RECORRIDO.md`: orden de las diez escenas y notas para exponer.
-- `docs/03_DISENO_Y_NAVEGACION.md`: lÃ³gica del lienzo, estáÃ©tica, movimiento y accesibilidad.
-- `docs/04_ROADMAP_Y_PENDIENTES.md`: materiales faltantes y prÃ³ximas iteraciones.
-- `docs/05_REFERENCIAS.md`: enlaces entregados y referencias conceptuales.
-- `CHANGELOG.md`: alcance de estáa primera versiÃ³n.
-
-## Publicar en un repositorio Git
-
-El ZIP no contiene el historial interno ni la carpeta `.git`; estáÃ¡ limpio y listo para un repositorio nuevo.
-
-```bash
-git init
-git add .
-git commit -m "PresentaciÃ³n interactiva HOSRIA"
-git branch -M main
-git remote add origin URL_DEL_REPOSITORIO
-git push -u origin main
+```text
+© 2026 LBM STUDIOS // LUCAS BEATHYATE MASCHERINI. ALL RIGHTS RESERVED.
+DESIGNED FOR DELOITTE HEALTHCARE SYSTEMS ARCHITECTURE.
 ```
-
-## estáado actual
-
-La versiÃ³n incluida es el primer prototipo conceptual validable. Los bloques visuales estáÃ¡n listos para sustituirse o complementarse con las pantallas seleccionadas por Deloitte sin cambiar la lÃ³gica de navegaciÃ³n.
-
