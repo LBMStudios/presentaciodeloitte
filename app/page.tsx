@@ -386,7 +386,12 @@ export default function Home() {
                   </div>
                   <strong>Visión 360°</strong>
                   <p>Indicadores unificados sobre una misma realidad.</p>
-                  <span className="step-status status-green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline-block", verticalAlign: "middle", marginRight: "4px" }}><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Tiempo real<            {active === 6 && <section className="detail-node detail-communications" aria-label="Comunicaciones personalizadas">
+                  <span className="step-status status-green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline-block", verticalAlign: "middle", marginRight: "4px" }}><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Tiempo real</span>
+                </div>
+              </div>
+            </section>}
+
+            {active === 6 && <section className="detail-node detail-communications" aria-label="Comunicaciones personalizadas">
               <div className="detail-top-row">
                 <button className="back-btn" onClick={() => goTo(3)} aria-label="Volver al ecosistema">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
@@ -423,8 +428,7 @@ export default function Home() {
                   <div className="audience"><span>Notificaciones</span></div>
                 </div>
               </div>
-              <blockquote>“Si ya lo sabemos,<br />¿por qué volver a pedirlo?”</blockquote>
-            </section>}�Si ya lo sabemos,<br />no lo volvemos a pedir.”</blockquote>
+              <blockquote>"Si ya lo sabemos,<br />¿por qué volver a pedirlo?"</blockquote>
             </section>}
 
             {active === 8 && <section className="outcomes-node" aria-label="Resultados de HOSRIA">
